@@ -279,12 +279,17 @@ public class ControllerServlet extends HttpServlet {
 				// session.setAttribute("grantAccess", "true");
 				// url = "/index.jsp";
 				url = "/login.jsp";
-			} else if (action.equals("numTransAdq")) {
+			} else if (action.equals("numTransAdqFiltros")) {
+				session.setAttribute("BANCOS", BANCOS);
+				url = "/stat06Nt/numTransAdqFiltros.jsp";
+			} 
+                        else if (action.equals("numTransAdq")) {
 				session.setAttribute("BANCOS", BANCOS);
 				url = "/numTransAdq.jsp";
-			} else if (action.equals("numTransAdqMain")) {
+			}
+                        else if (action.equals("numTransAdqMain")) {
 				session.setAttribute("TBL_TRANS_ADQ", TBL_TRANS_ADQ);
-				url = "/numTransAdqMain.jsp";
+				url = "/stat06Nt/numTransAdqMain.jsp";
 			} else if (action.equals("amountTransAdq")) {
 				session.setAttribute("BANCOS", BANCOS);
 				url = "/amountTransAdq.jsp";
@@ -408,7 +413,8 @@ public class ControllerServlet extends HttpServlet {
 					 * "Armar" la url y ponerla en sesion
 					 */
 					String amb =(String)session.getAttribute("ambiente");
-					if (amb.equals("Nacional")) {
+					if (amb.equals("Nacional")) 
+                                        {
 						/*---------------------------------------------------------------------------------
 						-- Marca del Cambio : WELL-JMQ-P-02-0472-13 Inicia la Modificacion   04/08/2014 -
 						---------------------------------------------------------------------------------*/
