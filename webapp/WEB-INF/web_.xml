@@ -4,7 +4,7 @@
 <web-app>
   <servlet>
     <servlet-name>ControllerServlet</servlet-name>
-    <servlet-class>com.wellcom.prosa.repred.ControllerServlet</servlet-class>
+    <servlet-class>com.prosa.repred.ControllerServlet</servlet-class>
     <init-param>
       <param-name>BANCOS</param-name>
       <param-value>BANCOS</param-value>
@@ -96,11 +96,11 @@
   </servlet>
   <servlet>
     <servlet-name>PDFServlet</servlet-name>
-    <servlet-class>com.wellcom.io.PDFServlet</servlet-class>
+    <servlet-class>com.prosa.io.PDFServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>ExcelServlet</servlet-name>
-    <servlet-class>com.wellcom.io.ExcelServlet</servlet-class>
+    <servlet-class>com.prosa.io.ExcelServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ControllerServlet</servlet-name>
