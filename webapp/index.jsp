@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=iso-8859-1" language="java" import="java.sql.*" errorPage="errorPage.jsp" %>
-<jsp:useBean id="ga" scope="session" class="com.wellcom.net.GrantAccess"/>
+<jsp:useBean id="ga" scope="session" class="com.prosa.net.GrantAccess"/>
 
 <%
     if(!ga.AccessGranted(session, "grantAccess")){
@@ -25,10 +25,15 @@ body,td,th {
 		document.formIndex.submit();
 	}
 </script>
-
+        <link href="bootstrap/css/style.css"    />
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="bootstrap/js/jquery-1.11.1.min.js"/></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="bootstrap/js/scripts.js"></script>
 </head>
 
 <body>
+    
 <div align="center">
 	<p>
 		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="640" height="144">
@@ -38,6 +43,7 @@ body,td,th {
 		</object>
 </p>
 <%
+/*
 String role=new String((String)session.getAttribute("role"));
 System.out.println("role del index: " + role);
 if(role.equals("administrador"))
@@ -65,12 +71,57 @@ else if(role.equals("banco"))
 if(role.equals("bancoint"))
 {
     System.out.println("ya paso por aqui bancoint y seteo ambiente" );
-	session.setAttribute("ambiente","Internacional");
-	out.print("<p><a href=\"index2.jsp\">Entrar</a></p>");
+    session.setAttribute("ambiente","Internacional");
+    out.print("<p><a href=\"index2.jsp\">Entrar</a></p>");
 	
 }
+*/
 %>
 </div>
-<p>&nbsp;</p>
+<%
+String role=new String((String)session.getAttribute("role"));
+System.out.println("role del index: " + role);
+StringBuffer   sb= new StringBuffer();
+
+if(role.equals("administrador"))
+{
+
+   sb.append("<form id frm>");
+     sb.append("<div class=\"row\">");
+                sb.append("<div class=\"col-md-12 school-options-dropdown text-center\">");
+                   sb.append("<div class=\"dropdown btn-group\">");
+                          sb.append("<button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">Seleccionar Operacion:");
+                             sb.append("<span class=\"caret \"></span>");
+                          sb.append("</button>");
+                          sb.append("<ul class=\"dropdown-menu\">");
+                            sb.append("<li><a href=\"./index2.jsp?AMB=Nacional\" type=\"submit\">Operacion Nacional</a></li>");
+                            sb.append("<li class=\"divider\"></li>");
+                            sb.append("<li><a href=\"./index2.jsp?AMB=Internacional\" type=\"submit\">Operacion Internacional</a></li>");
+                          sb.append("</ul>");
+                  sb.append("</div>");
+                sb.append("</div>");
+     sb.append("</div>");
+sb.append("</form>");
+out.print(sb.toString());
+}
+else if(role.equals("banco"))
+{
+
+    session.setAttribute("ambiente","Nacional");
+    request.setAttribute("AMB","");  
+    System.out.println("ya paso por aqui banco y seteo ambiente" );
+    out.print("<p><a href=\"index2.jsp\">Entrar</a></p>");	
+}
+else if(role.equals("bancoint"))
+{
+   System.out.println("ya paso por aqui bancoint y seteo ambiente" );
+   session.setAttribute("ambiente","Internacional");
+   out.print("<p><a href=\"index2.jsp\">Entrar</a></p>");
+
+}
+
+
+
+%>                                      
 </body>
 </html>
