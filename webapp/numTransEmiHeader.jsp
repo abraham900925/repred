@@ -17,22 +17,22 @@
 #-----------------------------------------------------------------------------  #
 # Autor               :JOAQUIN MOJICA                                           #
 # Proyecto/Procliente :P-02-0163-09                  Fecha:01/06/2009           #
-# Modificación        :Alta Banco Cajeros de Conveniencia PROSA para Front End  #
+# Modificaciï¿½n        :Alta Banco Cajeros de Conveniencia PROSA para Front End  #
 #-----------------------------------------------------------------------------  #
 # Autor               :JOAQUIN MOJICA                                           #
 # Compania            :WELLCOM SA DE CV                                         #
 # Proyecto/Procliente :P-02-0472-13                  Fecha:20/03/2014           #
-# Modificación        :Consolidacion de fiids para Banorte						#
+# Modificaciï¿½n        :Consolidacion de fiids para Banorte						#
 #-----------------------------------------------------------------------------  #
 # Autor               :Sergio Escalante Ramirez                                 #
 # Compania            :WELLCOM SA DE CV                                         #
 # Proyecto/Procliente :C-04-2006-14                Fecha:12/06/2014             #
-# Modificación        :Intercambio de imágenes PROSA    						#
+# Modificaciï¿½n        :Intercambio de imï¿½genes PROSA    						#
 #-----------------------------------------------------------------------------  #
 # Autor               :                                                         #
 # Compania            :                                                         #
 # Proyecto/Procliente :                              Fecha:                     #
-# Modificación        :                                                         #
+# Modificaciï¿½n        :                                                         #
 #-----------------------------------------------------------------------------  #
 # Numero de Parametros: 0                                                       #
 ###############################################################################*/
@@ -40,11 +40,11 @@
 
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
-<%@page import="com.wellcom.sql.Database"%>
-<%@page import="com.wellcom.io.HTML"%>
+<%@page import="com.prosa.sql.Database"%>
+<%@page import="com.prosa.io.HTML"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
-<jsp:useBean id="ga" scope="session" class="com.wellcom.net.GrantAccess" />
+<jsp:useBean id="ga" scope="session" class="com.prosa.net.GrantAccess" />
 <%!
     /**
     * Database

@@ -25,12 +25,12 @@
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@page contentType="text/html; charset=iso-8859-1" errorPage="errorPage.jsp"%>
-<%@ page import="com.wellcom.sql.Database" %>
-<%@ page import="com.wellcom.io.*" %>
+<%@ page import="com.prosa.sql.Database" %>
+<%@ page import="com.prosa.io.*" %>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.io.ByteArrayOutputStream"%>
-<jsp:useBean id="ga" scope="session" class="com.wellcom.net.GrantAccess"/>
+<jsp:useBean id="ga" scope="session" class="com.prosa.net.GrantAccess"/>
 
 <%!
     /**

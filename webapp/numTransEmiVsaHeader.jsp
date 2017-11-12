@@ -18,12 +18,12 @@
 # Autor               :Sergio Escalante Ramirez                                 #
 # Compania            :WELLCOM SA DE CV                                         #
 # Proyecto/Procliente :C-04-2006-14                Fecha:12/06/2014             #
-# Modificación        :Intercambio de imágenes PROSA    						#
+# Modificaciï¿½n        :Intercambio de imï¿½genes PROSA    						#
 #-----------------------------------------------------------------------------  #
 # Autor               :                                                         #
 # Autor               :                                                         #
 # Proyecto/Procliente :                              Fecha:                     #
-# Modificación        :                                                         #
+# Modificaciï¿½n        :                                                         #
 #-----------------------------------------------------------------------------  #
 # Numero de Parametros: 0                                                       #
 ###############################################################################*/
@@ -31,11 +31,11 @@
 
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
-<%@page import="com.wellcom.sql.Database"%>
-<%@page import="com.wellcom.io.HTML"%>
+<%@page import="com.prosa.sql.Database"%>
+<%@page import="com.prosa.io.HTML"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
-<jsp:useBean id="ga" scope="session" class="com.wellcom.net.GrantAccess" />
+<jsp:useBean id="ga" scope="session" class="com.prosa.net.GrantAccess" />
 <%!
     /**
     * Database

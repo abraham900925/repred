@@ -34,12 +34,12 @@
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@page contentType="text/html; charset=iso-8859-1" errorPage="errorPage.jsp"%>
-<%@ page import="com.wellcom.sql.Database" %>
-<%@ page import="com.wellcom.io.*" %>
+<%@ page import="com.prosa.sql.Database" %>
+<%@ page import="com.prosa.io.*" %>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.io.ByteArrayOutputStream"%>
-<jsp:useBean id="ga" scope="session" class="com.wellcom.net.GrantAccess"/>
+<jsp:useBean id="ga" scope="session" class="com.prosa.net.GrantAccess"/>
 
 <%!
     /**
@@ -75,6 +75,7 @@
     String btnOK = "";
     String txtfStartDate = "";
     String txtfEndDate = "";
+    String ddlFiids = "";
     String txtfFiid;
     String cbFiid;
     String role;
@@ -94,7 +95,8 @@
     /**
     * HTML Table Display
     */
-    void resultTable(javax.servlet.jsp.JspWriter out) {
+    void resultTable(javax.servlet.jsp.JspWriter out) 
+    {
         try {
             out.println(
                  "<br><table width=\"50%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">"
@@ -132,7 +134,9 @@
             html.setCSSTRHeaderTable("td_header");
             html.setCSSTRDataTable("td_data");
             out.println(html.getTable(this.colsReport, this.banksPag));
-        } catch(Exception e) {
+        } 
+        catch(Exception e) 
+        {
         }
     }
 %>
@@ -151,12 +155,15 @@
     sessionID = request.getRequestedSessionId(); //+ "db";
     
 		ambiente=(String)session.getAttribute("ambiente");	    
-		if(ambiente.equals("Nacional")){
+		if(ambiente.equals("Nacional"))
+                {
 
 	    	 db = (Database)session.getAttribute(sessionID + "db");
 			 strconnbtnPDF="<input name=\"connPDF\" type=\"hidden\" id=\"conn\" value=\"db\">";
 			 strconnbtnExcel="<input name=\"connEXC\" type=\"hidden\" id=\"conn\" value=\"db\">";
-		 }else if(ambiente.equals("Internacional")){
+		 }
+                else if(ambiente.equals("Internacional"))
+                {
 			 db = (Database)session.getAttribute(sessionID + "db_int");
 			 strconnbtnPDF="<input name=\"connPDF\" type=\"hidden\" id=\"conn\" value=\"db_int\">";
 			 strconnbtnExcel="<input name=\"connEXC\" type=\"hidden\" id=\"conn\" value=\"db_int\">";
@@ -209,7 +216,8 @@
             txtfFiid = request.getParameter("txtfFiid");
            
             txtfStartDate = request.getParameter("txtfStartDate");
-			txtfEndDate = request.getParameter("txtfEndDate");
+            txtfEndDate = request.getParameter("txtfEndDate");
+            ddlFiids    = request.getParameter("ddlFiids");
 			/*
 			---------------------------------------------------------------------------------
 			-- Marca del Cambio : WELL-JMQ-P-02-0472-13 Inicia la Modificacion   30/07/2014 -
@@ -217,13 +225,14 @@
 			*/	
 			//cbFiid = request.getParameter("cbFiid");
             String []bancosEmi = request.getParameterValues("cbFiid");
-			 String bancosEmiStr="";
+            String bancosEmiStr="";
             String bancosEmiStraux="";
 			
-            for(int i=0;i<bancosEmi.length;i++) {
-				if(!bancosEmiStr.equals(""))
-					bancosEmiStr+="','";
-            	bancosEmiStr+=bancosEmi[i];
+            for(int i=0;i<bancosEmi.length;i++) 
+            {
+                if(!bancosEmiStr.equals(""))
+                   bancosEmiStr+="','";
+            	   bancosEmiStr+=bancosEmi[i];
             	//System.out.println("*****fiids reporte*******");
             	//System.out.print(bancosEmiStr+", ");
 				if(!bancosEmiStraux.equals(""))
@@ -233,45 +242,48 @@
             	//System.out.print(bancosEmiStraux+", ");
             }
             //Pongo en session los objetos leidos
-            if (role.equals("banco")||role.equals("administrador")){
+            if (role.equals("banco")||role.equals("administrador"))
+            {
                //session.setAttribute("fiid_reporte",(role.equals("banco") ? txtfFiid : cbFiid));
 			   //System.out.println("fiid_reporte: " + (role.equals("banco") ? txtfFiid : cbFiid));
 			   session.setAttribute("fiid_reporte", bancosEmiStraux);
 			   //System.out.println("fiid_reporte: " + bancosEmiStraux);
-			}
-			else
-			{
-             bancoCO02=(String)(role.equals("bancoint") ? txtfFiid : bancosEmiStr);
-             if (bancoCO02.equals("CO02")){
-             //System.out.println("Banco especial");          
-               colsReport[0] ="Fecha";
-               colsReport[1] ="Banco";
-               colsReport[2] ="Retiro MN";
-               colsReport[3] ="Linea de Credito";
-               colsReport[4] ="Ping";
-   	           colsReport[5] ="Cons. Fact.";
-	           colsReport[6] ="Consultas";
-	           colsReport[7] ="Asigna";
-	           colsReport[8] ="Rechazos";
-	           colsReport[9] ="Avances";
-	           colsReport[10] ="Transfer";
-	           colsReport[11] ="Mini Ext."; 
-	           colsReport[12] ="Pago Fact.";
-             };    
-  			   session.setAttribute("fiid_reporte",(role.equals("bancoint") ? txtfFiid : bancosEmiStr));
-			   System.out.println("fiid_reporte: " + (role.equals("bancoint") ? txtfFiid : bancosEmiStr));
-			}
+	    }
+	   else
+	    {
+              bancoCO02=(String)(role.equals("bancoint") ? txtfFiid : bancosEmiStr);
+              if (bancoCO02.equals("CO02"))
+              {
+                //System.out.println("Banco especial");          
+                colsReport[0] ="Fecha";
+                colsReport[1] ="Banco";
+                colsReport[2] ="Retiro MN";
+                colsReport[3] ="Linea de Credito";
+                colsReport[4] ="Ping";
+   	        colsReport[5] ="Cons. Fact.";
+	        colsReport[6] ="Consultas";
+                colsReport[7] ="Asigna";
+                colsReport[8] ="Rechazos";
+                colsReport[9] ="Avances";
+                colsReport[10] ="Transfer";
+                colsReport[11] ="Mini Ext."; 
+                colsReport[12] ="Pago Fact.";
+              };    
+                session.setAttribute("fiid_reporte",(role.equals("bancoint") ? txtfFiid : bancosEmiStr));
+                System.out.println("fiid_reporte: " + (role.equals("bancoint") ? txtfFiid : bancosEmiStr));
+	     }
             /*
 			---------------------------------------------------------------------------------
 			-- Marca del Cambio : WELL-JMQ-P-02-0472-13 Termina la Modificacion   30/07/2014 -
 			---------------------------------------------------------------------------------
 			*/	
-            session.setAttribute("fechaIni_reporte",txtfStartDate);
-            session.setAttribute("fechaFin_reporte",txtfEndDate);            
-            System.out.println("fechaIni_reporte: " + txtfStartDate);
-         	System.out.println("fechaFin_reporte: " + txtfEndDate);
-            currentRow = 1;
-            if (role.equals("bancoint")){
+               session.setAttribute("fechaIni_reporte",txtfStartDate);
+               session.setAttribute("fechaFin_reporte",txtfEndDate);            
+               System.out.println("fechaIni_reporte: " + txtfStartDate);
+               System.out.println("fechaFin_reporte: " + txtfEndDate);
+               currentRow = 1;
+            if (role.equals("bancoint"))
+            {
             query =
                 "SELECT " +
                 "FECHA , CODIGO_BANCO_EMI,RETIRO_MN, RETIRO_DLLS, VTA_GENERICA, PAGO_ELEC, CONSULTAS, CAMBIO_NIP, " +
@@ -279,20 +291,20 @@
                 "FROM " + TBL_TRANS_ADQ +
                 " WHERE FECHA >= TO_DATE(" + "'" + txtfStartDate + "','dd/mm/yyyy') " +
                 "AND FECHA <= TO_DATE(" + "'" + txtfEndDate + "','dd/mm/yyyy') " + 
-				/*
-				---------------------------------------------------------------------------------
-				-- Marca del Cambio : WELL-JMQ-P-02-0472-13 Inicia la Modificacion   20/03/2014 -
-				---------------------------------------------------------------------------------
-				*/	 
-				"AND CODIGO_BANCO_ADQ IN('" + (role.equals("bancoint") ? txtfFiid : bancosEmiStr) + "')";
-				/*
-				---------------------------------------------------------------------------------
-				-- Marca del Cambio : WELL-JMQ-P-02-0472-13 Termina la Modificacion   20/03/2014 -
-				---------------------------------------------------------------------------------
-				*/	 
-			}
-			else
-			{
+                /*
+                ---------------------------------------------------------------------------------
+                -- Marca del Cambio : WELL-JMQ-P-02-0472-13 Inicia la Modificacion   20/03/2014 -
+                ---------------------------------------------------------------------------------
+                */	 
+                "AND CODIGO_BANCO_ADQ IN('" + (role.equals("bancoint") ? txtfFiid : bancosEmiStr) + "')";
+                /*
+                ---------------------------------------------------------------------------------
+                -- Marca del Cambio : WELL-JMQ-P-02-0472-13 Termina la Modificacion   20/03/2014 -
+                ---------------------------------------------------------------------------------
+                */	 
+	    }
+	   else
+            {
     //--------------------------------------------------------------------------------
     // Marca del Cambio : WELL-JMQ-P-09-0124-10 Inicia la Modificacion   01/12/2010  -
     //--------------------------------------------------------------------------------		
@@ -317,7 +329,7 @@
     //--------------------------------------------------------------------------------
     // Marca del Cambio : WELL-JMQ-P-09-0124-10 Inicia la Modificacion   01/12/2010  -
     //--------------------------------------------------------------------------------                
-			}
+	   }
             System.out.println("query: " + query);
 
             db.setQuerySelect(query);
@@ -327,11 +339,13 @@
             */
             db.executeQuerySelect();
             numResults = db.getNumRowsRS();
-            if(numResults < 0) {
+            if(numResults < 0) 
+            {
                 numResults = 0;
             }
             out.println("<b>Número de resultados: " + numResults + "<b><br><br>");
-            if(numResults > 0) {
+            if(numResults > 0) 
+            {
 
                 /**
                 * PDF y XLS Reports
@@ -371,7 +385,8 @@
         /**
         * Forward Pagination
         */
-        } else if(pagination.equals("N")) {
+        } else if(pagination.equals("N")) 
+        {
                 out.println("<b>Número de resultados: " + numResults + "<b><br><br>");
                 banksPag = db.getNextResultSetData(ROWS_PER_PAGE);
                 it = banksPag.iterator();
@@ -387,7 +402,8 @@
         /**
         * Reverse Pagination
         */
-        } else if(pagination.equals("P")) {
+        } else if(pagination.equals("P"))
+        {
             out.println("<b>Número de resultados: " + numResults + "<b><br><br>");
             banksPag = db.getPrevResultSetData(ROWS_PER_PAGE);
             it = banksPag.iterator();

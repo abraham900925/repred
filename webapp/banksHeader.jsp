@@ -1,6 +1,6 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
-<jsp:useBean id="ga" scope="session" class="com.wellcom.net.GrantAccess" />
+<jsp:useBean id="ga" scope="session" class="com.prosa.net.GrantAccess" />
 
 <%
 	if (!ga.AccessGranted(session, "grantAccess")) {

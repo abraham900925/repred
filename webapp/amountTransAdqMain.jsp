@@ -30,12 +30,12 @@
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@page contentType="text/html; charset=iso-8859-1" errorPage="errorPage.jsp"%>
-<%@ page import="com.wellcom.sql.Database" %>
-<%@ page import="com.wellcom.io.*" %>
+<%@ page import="com.prosa.sql.Database" %>
+<%@ page import="com.prosa.io.*" %>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.io.ByteArrayOutputStream"%>
-<jsp:useBean id="ga" scope="session" class="com.wellcom.net.GrantAccess"/>
+<jsp:useBean id="ga" scope="session" class="com.prosa.net.GrantAccess"/>
 
 <%!
     /**
@@ -189,7 +189,8 @@
         /**
         * Query
         */
-        } else if((btnOK != null) && (pagination == null)) {
+        } else if((btnOK != null) && (pagination == null)) 
+        {
         
             /**
             * HTML
@@ -205,39 +206,41 @@
 			//cbFiid = request.getParameter("cbFiid");
             String []bancosEmi = request.getParameterValues("cbFiid");
             String bancosEmiStr="";
-			String bancosEmiStraux="";
-			for(int i=0;i<bancosEmi.length;i++) {
+            String bancosEmiStraux="";
+	    for(int i=0;i<bancosEmi.length;i++)
+            {
             	if(!bancosEmiStr.equals(""))
-					bancosEmiStr+="','";
+		bancosEmiStr+="','";
             	bancosEmiStr+=bancosEmi[i];
             	//System.out.println("*****fiids reporte*******");
             	//System.out.print(bancosEmiStr+", ");
-				if(!bancosEmiStraux.equals(""))
-					bancosEmiStraux+=",";
-				bancosEmiStraux+=bancosEmi[i];
+                if(!bancosEmiStraux.equals(""))
+                bancosEmiStraux+=",";
+                bancosEmiStraux+=bancosEmi[i];
 				//System.out.println("*****fiids reporte O3*******");
             	//System.out.print(bancosEmiStraux+", ");
             }
 			
             txtfStartDate = request.getParameter("txtfStartDate");
-			txtfEndDate = request.getParameter("txtfEndDate");
-			String fiid = (String)session.getAttribute("fiid");
+	    txtfEndDate = request.getParameter("txtfEndDate");
+	    String fiid = (String)session.getAttribute("fiid");
 			//System.out.println("*****fiid*******"+fiid);
 			
             //Pongo en session los objetos leidos
-            if (role.equals("banco")){
+            if (role.equals("banco"))
+            {
                //session.setAttribute("fiid_reporte",(role.equals("banco") ? txtfFiid : cbFiid));
                //System.out.println("fiid_reporte: " + (role.equals("banco") ? txtfFiid : cbFiid));
 						   
 			  session.setAttribute("fiid_reporte",bancosEmiStraux);
               //System.out.println("fiid_reporte: " + bancosEmiStraux);
 
-			}
-			else
-			{
-  			   session.setAttribute("fiid_reporte",(role.equals("bancoint") ? txtfFiid : bancosEmiStraux));
-			   System.out.println("fiid_reporte: " + (role.equals("bancoint") ? txtfFiid : bancosEmiStraux));
-			}
+            }
+            else
+            {
+               session.setAttribute("fiid_reporte",(role.equals("bancoint") ? txtfFiid : bancosEmiStraux));
+               System.out.println("fiid_reporte: " + (role.equals("bancoint") ? txtfFiid : bancosEmiStraux));
+            }
             /*
 			---------------------------------------------------------------------------------
 			-- Marca del Cambio : WELL-JMQ-P-02-0472-13 Termina la Modificacion   30/07/2014 -
@@ -246,10 +249,11 @@
             session.setAttribute("fechaIni_reporte",txtfStartDate);
             session.setAttribute("fechaFin_reporte",txtfEndDate);            
             System.out.println("fechaIni_reporte: " + txtfStartDate);
-         	System.out.println("fechaFin_reporte: " + txtfEndDate);
+            System.out.println("fechaFin_reporte: " + txtfEndDate);
             
             currentRow = 1;
-			if (role.equals("bancoint")){
+	  if (role.equals("bancoint"))
+          {
             query =
                 "SELECT " +
                 "FECHA, CODIGO_BANCO_EMI, CODIGO_BANCO_ADQ, CODIGO_TIPO_OPERACION, NOMBRE, CTA_CHEQUES, CTA_AHORRO, CTA_CREDITO, TRANFEE " +
@@ -268,9 +272,9 @@
 				---------------------------------------------------------------------------------
 				*/	 
 				
-			}
-			else
-			{
+        }
+        else
+        {
             query =
                 "SELECT " +
                 "FECHA, CODIGO_BANCO_EMI, CODIGO_BANCO_ADQ, CODIGO_TIPO_OPERACION, NOMBRE, CTA_CHEQUES, CTA_AHORRO, CTA_CREDITO, TRANFEE " +
@@ -288,7 +292,7 @@
 				-- Marca del Cambio : WELL-JMQ-P-02-0472-13 Termina la Modificacion   30/07/2014 -
 				---------------------------------------------------------------------------------
 				*/	 
-			}
+	}
             System.out.println("query: " + query);
 
             db.setQuerySelect(query);

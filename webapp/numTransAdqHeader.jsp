@@ -17,22 +17,22 @@
 #-----------------------------------------------------------------------------  #
 # Autor               :JOAQUIN MOJICA                                           #
 # Proyecto/Procliente :P-02-0163-09                  Fecha:01/06/2009           #
-# Modificación        :Alta Banco Cajeros de Conveniencia PROSA para Front End  #
+# Modificaciï¿½n        :Alta Banco Cajeros de Conveniencia PROSA para Front End  #
 #-----------------------------------------------------------------------------  #
 # Autor               :JOAQUIN MOJICA                                           #
 # Compania            :WELLCOM SA DE CV                                         #
 # Proyecto/Procliente :P-02-0472-13                  Fecha:20/03/2014           #
-# Modificación        :Consolidacion de fiids para Banorte					    #
+# Modificaciï¿½n        :Consolidacion de fiids para Banorte					    #
 #-----------------------------------------------------------------------------  #
 # Autor               :Sergio Escalante Ramirez                                 #
 # Compania            :WELLCOM SA DE CV                                         #
 # Proyecto/Procliente :C-04-2006-14                Fecha:12/06/2014             #
-# Modificación        :Intercambio de imágenes PROSA    						#
+# Modificaciï¿½n        :Intercambio de imï¿½genes PROSA    						#
 #-----------------------------------------------------------------------------  #
 # Autor               :                                                         #
 # Compania            :                                                         #
 # Proyecto/Procliente :                              Fecha:                     #
-# Modificación        :                                                         #
+# Modificaciï¿½n        :                                                         #
 #-----------------------------------------------------------------------------  #
 # Numero de Parametros: 0                                                       #
 ###############################################################################*/
@@ -40,11 +40,11 @@
 
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
-<%@page import="com.wellcom.sql.Database"%>
-<%@page import="com.wellcom.io.HTML"%>
+<%@page import="com.prosa.sql.Database"%>
+<%@page import="com.prosa.io.HTML"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
-<jsp:useBean id="ga" scope="session" class="com.wellcom.net.GrantAccess" />
+<jsp:useBean id="ga" scope="session" class="com.prosa.net.GrantAccess" />
 <%!
     /**
     * Database
@@ -65,7 +65,8 @@
 %>
 
 <%
-	if (!ga.AccessGranted(session, "grantAccess")) {
+	if (!ga.AccessGranted(session, "grantAccess")) 
+        {
 		response.sendRedirect("login.jsp");
 	}
 
@@ -76,14 +77,17 @@
 	 
 	 sessionID = request.getRequestedSessionId();
 	 System.out.println("ambiente" + ambiente);
-	 if(ambiente.equals("Nacional")){
+	 if(ambiente.equals("Nacional"))
+         {
 
 	    	 db = (Database)session.getAttribute(sessionID + "db");
    	 
-		 }else if(ambiente.equals("Internacional")){
+         }
+        else if(ambiente.equals("Internacional"))
+         {
 
-			 db = (Database)session.getAttribute(sessionID + "db_int");
-		 }
+                db = (Database)session.getAttribute(sessionID + "db_int");
+         }
 	 
 	 //db = (Database)session.getAttribute(sessionID + "db");
 	 BANCOS = (String)session.getAttribute("BANCOS");
@@ -97,7 +101,7 @@
 	
 	 fiid = (String)session.getAttribute("fiid");
 	 role = (String)session.getAttribute("role");
-     System.out.println("role:" + role);
+         System.out.println("role:" + role);
      //System.out.println("SUBSTRING fiid:" + fiid.substring(1,4));
 	
 	 query = "SELECT DISTINCT CODIGO_BANCO FROM " + BANCOS;
@@ -107,15 +111,19 @@
 -- Marca del Cambio : WELL-JMQ-P-02-0163-09 Inicia la Modificacion   01/06/2009 -
 ---------------------------------------------------------------------------------
 */
-	 if((role.equals("banco") && fiid.equals("S044")) || (role.equals("banco") && fiid.equals("L060")) || (role.equals("banco") && fiid.equals("P044"))){
+	 if((role.equals("banco") && fiid.equals("S044")) || (role.equals("banco") && fiid.equals("L060")) || (role.equals("banco") && fiid.equals("P044")))
+         {
 		 query=query+  " WHERE CODIGO_BANCO = '" + fiid + "'";
-	}else if(role.equals("banco")){
+	 }
+         else if(role.equals("banco"))
+         {
 			/*
 			---------------------------------------------------------------------------------
 			-- Marca del Cambio : WELL-JMQ-P-02-0472-13 Inicia la Modificacion   30/07/2014 -
 			---------------------------------------------------------------------------------
 			*/	
-			 if(fiid.equals("B072")){
+			 if(fiid.equals("B072"))
+                         {
 				//System.out.println("Desplegar 3 fiids");
 		
 				 query="SELECT TABLA.CODIGO_BANCO_HIJO FROM ("
@@ -124,7 +132,9 @@
 					  +" SELECT TSRRB.CODIGO_BANCO, TSRRB.CODIGO_BANCO FROM TBL_SRR_BANCO TSRRB" 
 					  +" )TABLA "
 					  +" WHERE CODIGO_BANCO LIKE '%" + fiid.substring(1,4) + "%' AND codigo_banco not in ('S044', 'L060','P044')";
-			 }else{
+			 }
+                         else
+                         {
 				/*
 				---------------------------------------------------------------------------------
 				-- Marca del Cambio : WELL-JMQ-P-02-0472-13 Termina la Modificacion   30/07/2014 -
@@ -132,7 +142,7 @@
 				*/	
 			 	query=query+  " WHERE CODIGO_BANCO LIKE '%" + fiid.substring(1,4) + "%' AND codigo_banco not in ('S044', 'L060','P044')";
 			 }
-		 }
+       }
 /*	 
 ---------------------------------------------------------------------------------
 -- Marca del Cambio : WELL-JMQ-P-02-0163-09 Finaliza la Modificacion 01/06/2009 -
@@ -219,24 +229,33 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 //                                        out.println(
 //                                            "<input name=\"txtfFiid\" type=\"text\" id=\"txtfFiid\" readonly value=\"" + fiid + "\">"
 //                                    	);
-                                    if(role.equals("bancoint")) {
+                                    if(role.equals("bancoint")) 
+                                    {
                                         out.println(
                                             "<input name=\"txtfFiid\" type=\"text\" id=\"txtfFiid\" readonly value=\"" + fiid + "\">");
-                                    } else if(role.equals("banco")) {
-                                     /*
-									---------------------------------------------------------------------------------
-									-- Marca del Cambio : WELL-JMQ-P-02-0472-13 Inicia la Modificacion   30/07/2014 -
-									---------------------------------------------------------------------------------
-									*/
-                                    	if(fiid.equals("B072")){
+                                    } 
+                                    else if(role.equals("banco")) 
+                                    {
+                                        /*
+                                        ---------------------------------------------------------------------------------
+                                        -- Marca del Cambio : WELL-JMQ-P-02-0472-13 Inicia la Modificacion   30/07/2014 -
+                                        ---------------------------------------------------------------------------------
+                                        */
+                                    	if(fiid.equals("B072"))
+                                        {
                                     		out.println(html.getListBox("cbFiid", fiidAL,"Selecione las fiids a consultar"));
-                                    	}else
-                                    		out.println(html.getComboBox("cbFiid", fiidAL));
-                                    } else if(role.equals("administrador")) {
-										if(fiid.equals("B072")){
-											out.println(html.getListBox("cbFiid", fiidAL,"Selecione las fiids a consultar"));
-                                    	}else
-                                    		out.println(html.getComboBox("cbFiid", fiidAL));
+                                    	}
+                                        else
+                                    	out.println(html.getComboBox("cbFiid", fiidAL));
+                                    } 
+                                    else if(role.equals("administrador")) 
+                                     {
+                                            if(fiid.equals("B072"))
+                                            {
+                                              out.println(html.getListBox("cbFiid", fiidAL,"Selecione las fiids a consultar"));
+                                            }
+                                          else
+                                          out.println(html.getComboBox("cbFiid", fiidAL));
                                     }
 									/*
 									---------------------------------------------------------------------------------

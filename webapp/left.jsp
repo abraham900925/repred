@@ -45,14 +45,14 @@
 ----------------------------------------------------------------------------------->
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
-<%@page import="com.wellcom.sql.Database"%>
-<%@page import="com.wellcom.io.HTML"%>
+<%@page import="com.prosa.sql.Database"%>
+<%@page import="com.prosa.io.HTML"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
 <!---------------------------------------------------------------------------------
 -- Marca del Cambio : WELL-JMQ-P-02-1245-09 Finaliza la Modificacion   08/12/2009 -
 ----------------------------------------------------------------------------------->
-<jsp:useBean id="ga" scope="session" class="com.wellcom.net.GrantAccess" />
+<jsp:useBean id="ga" scope="session" class="com.prosa.net.GrantAccess" />
 <%!
 /*---------------------------------------------------------------------------------
 --  Marca del Cambio : WELL-JMQ-P-02-1245-09 Inicia la Modificacion   08/12/2009  -
