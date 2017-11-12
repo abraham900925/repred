@@ -54,7 +54,7 @@ public class SessionConnection
       this.connection = value;
     }
     else {
-      throw new WellException("com.wellcom.sql.setConnection : "
+      throw new WellException("com.sql.setConnection : "
                               + "Parametro NULL");
     }
   }

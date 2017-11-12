@@ -1206,8 +1206,7 @@ public class Database
 
     try 
     {
-        
-        
+       // se agrega properties
       Properties props = new Properties(); 
       props.put("user", "root");         
       props.put("password", "root");
