@@ -20,10 +20,17 @@
         <link href="bootstrap/css/simple-sidebar.css" rel="stylesheet"></link>
         <script src="bootstrap/js/jquery.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
+        <link href="bootstrap/css/dataTables/dataTables.bootstrap.min.css" rel="stylesheet"/>
+        <link href="bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+        <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css"rel="stylesheet" type="text/css"/>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
-        <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css"rel="stylesheet" type="text/css"/>
         <script src="bootstrap/js/bootstrap-datetimepicker.js"></script>
+        <script src="bootstrap/js/bootstrap-datetimepicker.fr.js"></script>
+        
+        
+
+
 </head>
 
 
@@ -58,7 +65,7 @@
                             <a href="#">Reportes</a>     
                         </li>
                         <li>
-                            <a href="ControllerServlet?action=numTransAdq" class="link" target="mainFrame">Stat06-NT</a>     
+                            <a href="javascript:;" class="link details" id="numTransAdq" >Stat06-NT</a>     
                         </li>
                         <li>
                             <a href="ControllerServlet?action=amountTransAdq" class="link" target="mainFrame">Stat06-IT</a> 
@@ -70,7 +77,7 @@
                             <a href="ControllerServlet?action=amountTransEmi" class="link" target="mainFrame">Stat07-IT</a>               
                         </li>
                          <li>
-                             <a  href="javascript:;" class="link details" id="btn1"  >-prueba</a>               
+                             <a  href="javascript:;" class="link details" id="btn11"  >-prueba</a>               
                         </li>
                          <li>
                             <a  href="javascript:;" class="link details" id="btn2" >-prueba2</a>               
@@ -79,50 +86,71 @@
                     </ul>
                 </div><!--slider wrapper-->
             </div><!--fin wrapper-->
+            <div  id="dialog" ></div><!--se despliegan reportes-->
         </div><!-- /.container-fluid -->        
-        <div class="container-fluid" id="dialog" style="display: none">
-            <p>Contenido Dinamico</p>
-        </div>
       
+        <!--style="display: none"-->
         <script>
-        $("#menu-toggle").click(function(e) {
+        $("#menu-toggle").click(function(e) 
+        {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
         });
         
          $(function () 
          {
+             /*
             $("#dialog").dialog({
                 autoOpen: false,
                 modal: true,
                 title: "View Details"
-            });//fin de funcions
+                
+            });//fin de funcions*/
+        
             $("#userMenu").children('li').click(function () 
             {              
                     var id = $(this).children('a').attr('id');
-                 alert(id);
-                $.ajax({
-                    type: "POST",
-                    url: "/RepRedV1/pruebaAjax.jsp",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "html",
-                    success: function (response) {
+                    var urlP;
+                 
+                 //para reporte 
+                 if(id.valueOf()=="numTransAdq")
+                 {
+                     urlP="numTransAdqFiltros";
+                     
+                 }   
+                  if(id.valueOf()=="btn11")
+                 {
+                     urlP="pruebaAjax.jsp";
+                 } 
+                  if(id.valueOf()=="btn11")
+                 {
+                     urlP="numTransAdqHeader.jsp";
+                 } 
+                 
+                 if(urlP!=null)
+                 {
+                    $.ajax({
+                      type: "POST",
+                      url: "ControllerServlet?action="+urlP,
+                      contentType: "application/json; charset=utf-8",
+                      dataType: "html",
+                      success: function (response) {
                         $('#dialog').html(response);
-                        $('#dialog').dialog('open');
-                    },
-                    failure: function (response) {
+                        //$('#dialog').dialog('open');
+                     },
+                     failure: function (response) {
                         alert(response.responseText);
-                    },
-                    error: function (response) {
+                     },
+                     error: function (response) {
                         alert(response.responseText);
-                    }
-                });
+                      }
+                   });
+                 }
             });//Fin de funcion 
-        });
-        
+        });   
        </script>
-        
-        
+       <script src="bootstrap/dataTableJs/jquery.dataTables.min.js"></script>
+       <script src="bootstrap/dataTableJs/dataTables.bootstrap.min.js"></script>
     </body>
 <!--  
 <frameset rows="80,*" cols="*" frameborder="no" border="0" framespacing="0">
