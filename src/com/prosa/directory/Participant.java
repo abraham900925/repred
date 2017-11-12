@@ -139,7 +139,7 @@ public class Participant implements Serializable {
 		}
 
 		catch (Exception e) {
-			throw new WellException("com.wellcom.directory.Participant.load|"
+			throw new WellException("com.directory.Participant.load|"
 					+ e.toString());
 		}
 	}
@@ -152,7 +152,7 @@ public class Participant implements Serializable {
 		if (slogin == null || slogin.equals("") || spassword == null
 				|| spassword.equals("")) {
 			throw new WellException(
-					"com.wellcom.directory.Participant.doLogin|NODATA: Clave y Contrase�a Obligatorios.");
+					"com.directory.Participant.doLogin|NODATA: Clave y Contrase�a Obligatorios.");
 		}
 
 		login = slogin;
@@ -173,7 +173,7 @@ public class Participant implements Serializable {
 		if (slogin == null || slogin.equals("") || spassword == null
 				|| spassword.equals("")) {
 			throw new WellException(
-					"com.wellcom.directory.Participant.doLogin|NODATA: Clave y Contrase�a Obligatorios.");
+					"com.directory.Participant.doLogin|NODATA: Clave y Contrase�a Obligatorios.");
 		}
 
 		login = slogin;
@@ -283,7 +283,7 @@ public class Participant implements Serializable {
 			this.filePath = value;
 		} else {
 			throw new WellException(
-					"com.wellcom.directory.Participant.setFilePath"
+					"com.directory.Participant.setFilePath"
 							+ "Argumento null.");
 		}
 

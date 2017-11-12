@@ -63,7 +63,7 @@ public class ldap {
       this.filePath = value;
     }
     else {
-      throw new WellException("com.wellcom.directory.ldap.setFilePath"
+      throw new WellException("com.directory.ldap.setFilePath"
                               + "Argumento null.");
     }
 
@@ -86,7 +86,7 @@ public class ldap {
     }
     catch (Exception ex) {
       throw new WellException(
-        "com.wellcom.directory.ldap.getConnection"
+        "com.directory.ldap.getConnection"
         + ex.toString());
 
     }
@@ -138,7 +138,7 @@ public class ldap {
     }
     catch (Exception ex) {
       throw new WellException(
-        "com.wellcom.directory.ldap.getUserProperty:"
+        "com.directory.ldap.getUserProperty:"
         + ex.toString());
     }
 
@@ -159,7 +159,7 @@ public class ldap {
     }
     catch (Exception e) {
       throw new WellException(
-        "com.wellcom.directory.ldap.getAttributes: "
+        "com.directory.ldap.getAttributes: "
         + e.toString());
     }
 
@@ -175,7 +175,7 @@ public class ldap {
       if (sRuta.equals("")) {
         msg = "NOEXISTS";
         throw new WellException(
-          "com.wellcom.ldap.getAccess: "
+          "com.ldap.getAccess: "
           + "NOEXISTS: El usuario no existe.");
       }
 
@@ -194,14 +194,14 @@ public class ldap {
 
           msg = "NOGROUP";
           throw new WellException(
-            "com.wellcom.ldap.getAccess: "
+            "com.ldap.getAccess: "
             + "NOGROUP: El usuario no tiene un rol asignado.");
         }
       }
     }
     catch (Exception ex) {
       throw new WellException(
-        "com.wellcom.directory.Ldap.dameAcceso: "
+        "com.directory.Ldap.dameAcceso: "
         + ex.toString());
     }
     finally {
@@ -212,7 +212,7 @@ public class ldap {
       }
       catch (Exception ex) {
         throw new WellException(
-          "com.wellcom.directory.Ldap.dameAcceso: "
+          "com.directory.Ldap.dameAcceso: "
           + ex.toString());
       }
     }
@@ -278,7 +278,7 @@ public class ldap {
     }
     catch (Exception e) {
       throw new WellException(
-        "com.wellcom.directory.ldap.getProperties: "
+        "com.directory.ldap.getProperties: "
         + e.toString());
     }
   }
@@ -301,7 +301,7 @@ public class ldap {
       result = true;
     }
     catch (Exception ex) {
-      throw new WellException("com.wellcom.directory.ldap.validaAcceso:"
+      throw new WellException("com.directory.ldap.validaAcceso:"
                               + ex.toString());
     }
 
@@ -352,7 +352,7 @@ public class ldap {
       return true;
     }
     catch (Exception ex) {
-      throw new WellException("com.wellcom.directory.ldap.isAdminRole: "
+      throw new WellException("com.directory.ldap.isAdminRole: "
                               + ex.toString());
     }
   }
@@ -402,7 +402,7 @@ public class ldap {
     }
     catch (Exception ex) {
       throw new WellException(
-        "com.wellcom.directory.ldap.isSecurityRole: "
+        "com.directory.ldap.isSecurityRole: "
         + ex.toString());
     }
   }
@@ -452,7 +452,7 @@ public class ldap {
     }
     catch (Exception ex) {
       throw new WellException(
-        "com.wellcom.directory.ldap.isSecurityRole: "
+        "com.directory.ldap.isSecurityRole: "
         + ex.toString());
     }
   }
@@ -490,7 +490,7 @@ public class ldap {
 
     }
     catch (Exception ex) {
-      throw new WellException("com.wellcom.directory.ldap.validateUser:"
+      throw new WellException("com.directory.ldap.validateUser:"
                               + ex.toString());
     }
 

@@ -180,14 +180,14 @@ public class Jndi
     }
     catch (NamingException e) {
 //		e.printStackTrace();
-//		throw new WellException("com.wellcom.directory.Ldap.dameConexion: "+"[ERRORLDAP4].Credenciales Invalidas."+ url +", userDN="+ dn +" | "+ e);
-//		throw new WellException("com.wellcom.directory.Ldap.dameConexion|" + e.toString());
+//		throw new WellException("com.directory.Ldap.dameConexion: "+"[ERRORLDAP4].Credenciales Invalidas."+ url +", userDN="+ dn +" | "+ e);
+//		throw new WellException("com.directory.Ldap.dameConexion|" + e.toString());
       throw e;
 
     }
     catch (Exception e) {
 //		e.printStackTrace();
-//	 	throw new WellException("com.wellcom.directory.Ldap.dameConexion|" + e.toString());
+//	 	throw new WellException("com.directory.Ldap.dameConexion|" + e.toString());
       throw e;
     }
 
@@ -288,13 +288,13 @@ public class Jndi
       }
       catch (NamingException e) {
 //        e.printStackTrace();
-        throw new WellException("com.wellcom.directory.Ldap.imprimeAtributos|" +
+        throw new WellException("com.directory.Ldap.imprimeAtributos|" +
                                 e.toString());
 
       }
       catch (Exception e) {
 //		e.printStackTrace();
-        throw new WellException("com.wellcom.directory.Ldap.imprimeAtributos|" +
+        throw new WellException("com.directory.Ldap.imprimeAtributos|" +
                                 e.toString());
       }
     } // end if
@@ -325,13 +325,13 @@ public class Jndi
       }
       catch (NamingException e) {
 //        e.printStackTrace();
-        throw new WellException("com.wellcom.directory.Ldap.imprimeAtributos|" +
+        throw new WellException("com.directory.Ldap.imprimeAtributos|" +
                                 e.toString());
 
       }
       catch (Exception e) {
 //		e.printStackTrace();
-        throw new WellException("com.wellcom.directory.Ldap.imprimeAtributos|" +
+        throw new WellException("com.directory.Ldap.imprimeAtributos|" +
                                 e.toString());
       }
     } // end if
@@ -677,7 +677,7 @@ System.out.println("myOu2nd: " + myOu2nd);
     try {
       ResourceFile rs = new ResourceFile();
       if (filePath.length() == 0) {
-        throw new WellException("com.wellcom.directory.ldap.setFilePath"
+        throw new WellException("com.directory.ldap.setFilePath"
                                 + "Argumento null.");
       }
 
@@ -695,7 +695,7 @@ System.out.println("myOu2nd: " + myOu2nd);
     }
     catch (Exception e) {
       throw new WellException(
-        "com.wellcom.directory.ldap.doProperties|"
+        "com.directory.ldap.doProperties|"
         + e.toString());
     }
   }
