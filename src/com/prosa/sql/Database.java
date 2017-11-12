@@ -90,7 +90,7 @@ public class Database
       }
     }
     catch (Exception ex) {
-      throw new WellException("com.wellcom.sql.Database.finalize: "
+      throw new WellException("com.sql.Database.finalize: "
                               + ex.toString());
     }
   }
@@ -121,13 +121,13 @@ public class Database
       }
       else {
         throw new WellException(
-          "com.wellcom.sql.Database.getRSColumnsNames: "
+          "com.sql.Database.getRSColumnsNames: "
           + "this.resultSet = null");
       }
     }
     catch (SQLException sqlEx) {
       throw new WellException(
-        "com.wellcom.sql.Database.getRSColumnsNames: "
+        "com.sql.Database.getRSColumnsNames: "
         + sqlEx.toString());
     }
 
@@ -180,12 +180,12 @@ public class Database
       }
       else {
         throw new WellException(
-          "com.wellcom.sql.Database.getRSColumnsData: "
+          "com.sql.Database.getRSColumnsData: "
           + "this.resultSet = null");
       }
     }
     catch (Exception ex) {
-      new WellException("com.wellcom.sql.Database.getRSColsAsArray: "
+      new WellException("com.sql.Database.getRSColsAsArray: "
                         + ex.toString());
     }
 
@@ -215,7 +215,7 @@ public class Database
     }
     else {
       throw new WellException(
-        "com.wellcom.slq.Database.getRSColsDataSize: "
+        "com.slq.Database.getRSColsDataSize: "
         + "La tabla no contiene datos.");
     }
   }
@@ -264,13 +264,13 @@ public class Database
       }
       else {
         throw new WellException(
-          "com.wellcom.sql.Database.getNextRSColsData: "
+          "com.sql.Database.getNextRSColsData: "
           + "La tabla no contiene datos.");
       }
     }
     catch (Exception ex) {
       throw new WellException(
-        "com.wellcom.sql.Database.getNextRSColsData: "
+        "com.sql.Database.getNextRSColsData: "
         + ex.toString());
     }
 
@@ -296,7 +296,7 @@ public class Database
 
     if (this.resultSet == null) {
       throw new WellException(
-        "com.wellcom.sql.Database.getNextResultSetData: "
+        "com.sql.Database.getNextResultSetData: "
         + "ResultSet = null "
         );
     }
@@ -376,7 +376,7 @@ public class Database
     }
     catch (Exception ex) {
       throw new WellException(
-        "com.wellcom.sql.Database.getNextResultSetData: "
+        "com.sql.Database.getNextResultSetData: "
         + ex.toString()
         );
     }
@@ -403,7 +403,7 @@ public class Database
 
     if (this.resultSet == null) {
       throw new WellException(
-        "com.wellcom.sql.Database.getPrevResultSetData: "
+        "com.sql.Database.getPrevResultSetData: "
         + "ResultSet = null "
         );
     }
@@ -493,7 +493,7 @@ public class Database
     }
     catch (Exception ex) {
       throw new WellException(
-        "com.wellcom.sql.Database.getPrevResultSetData: "
+        "com.sql.Database.getPrevResultSetData: "
         + ex.toString()
       );
     }
@@ -547,13 +547,13 @@ public class Database
       }
       else {
         throw new WellException(
-          "com.wellcom.sql.Database.getPrevRSColsData: "
+          "com.sql.Database.getPrevRSColsData: "
           + "La tabla no contiene datos.");
       }
     }
     catch (Exception ex) {
       throw new WellException(
-        "com.wellcom.sql.Database.getPrevRSColsData: "
+        "com.sql.Database.getPrevRSColsData: "
         + ex.toString());
     }
 
@@ -578,13 +578,13 @@ public class Database
       }
       else {
         throw new WellException(
-          "com.wellcom.sql.Database.rstRSColsDataIdx: "
+          "com.sql.Database.rstRSColsDataIdx: "
           + "La tabla no contiene datos.");
       }
     }
     catch (Exception ex) {
       throw new WellException(
-        "com.wellcom.sql.Database.rstRSColsDataIdx: "
+        "com.sql.Database.rstRSColsDataIdx: "
         + ex.toString());
     }
   }
@@ -613,13 +613,13 @@ public class Database
       }
       else {
         throw new WellException(
-          "com.wellcom.sql.Database.getCurrRSColsData: "
+          "com.sql.Database.getCurrRSColsData: "
           + "La tabla no contiene datos.");
       }
     }
     catch (Exception ex) {
       throw new WellException(
-        "com.wellcom.sql.Database.getCurrRSColsData: "
+        "com.sql.Database.getCurrRSColsData: "
         + ex.toString());
     }
 
@@ -767,7 +767,7 @@ public class Database
 
       if (this.storeProcedure.length() <= 0) {
         throw new WellException(
-          "com.wellcom.sql.Database.getCallableStatement: "
+          "com.sql.Database.getCallableStatement: "
           + "No ha establecido un storeProcedure.");
       }
 
@@ -782,7 +782,7 @@ public class Database
     }
     catch (Exception e) {
       throw new WellException(
-        "com.wellcom.sql.Database.getCallableStatement: "
+        "com.sql.Database.getCallableStatement: "
         + e);
     }
 
@@ -798,7 +798,7 @@ public class Database
     try {
       if (this.querySelect.length() <= 0) {
         throw new WellException(
-          "com.wellcom.sql.Database.executeQuerySelect: "
+          "com.sql.Database.executeQuerySelect: "
           + "No ha establecido un querySelect.");
       }
 
@@ -852,12 +852,12 @@ public class Database
       }
       catch (SQLException sqlEx2) {
         throw new WellException(
-          "com.wellcom.sql.Database.executeQuerySelect.rollback: "
+          "com.sql.Database.executeQuerySelect.rollback: "
           + sqlEx.toString());
       }
 
       throw new WellException(
-        "com.wellcom.sql.Database.executeQuerySelect: "
+        "com.sql.Database.executeQuerySelect: "
         + sqlEx.toString());
     }
   }
@@ -872,7 +872,7 @@ public class Database
 
       if (this.queryDelete.length() <= 0) {
         throw new WellException(
-          "com.wellcom.sql.Database.executeQueryDelete: "
+          "com.sql.Database.executeQueryDelete: "
           + "No ha establecido un queryDelete.");
       }
 
@@ -914,12 +914,12 @@ public class Database
       }
       catch (SQLException sqlEx2) {
         throw new WellException(
-          "com.wellcom.sql.Database.executeQueryDelete.rollback: "
+          "com.sql.Database.executeQueryDelete.rollback: "
           + sqlEx.toString());
       }
 
       throw new WellException(
-        "com.wellcom.sql.Database.executeQueryDelete: "
+        "com.sql.Database.executeQueryDelete: "
         + sqlEx.toString());
     }
   }
@@ -934,7 +934,7 @@ public class Database
 
       if (this.queryInsert.length() <= 0) {
         throw new WellException(
-          "com.wellcom.sql.Database.executeQueryInsert: "
+          "com.sql.Database.executeQueryInsert: "
           + "No ha establecido un queryInsert.");
       }
 
@@ -976,12 +976,12 @@ public class Database
       }
       catch (SQLException sqlEx2) {
         throw new WellException(
-          "com.wellcom.sql.Database.executeQueryInsert.rollback: "
+          "com.sql.Database.executeQueryInsert.rollback: "
           + sqlEx.toString());
       }
 
       throw new WellException(
-        "com.wellcom.sql.Database.executeQueryInsert: "
+        "com.sql.Database.executeQueryInsert: "
         + sqlEx.toString());
     }
   }
@@ -996,7 +996,7 @@ public class Database
 
       if (this.queryUpdate.length() <= 0) {
         throw new WellException(
-          "com.wellcom.sql.Database.executeQueryUpdate: "
+          "com.sql.Database.executeQueryUpdate: "
           + "No ha establecido un queryUpdate.");
       }
 
@@ -1038,12 +1038,12 @@ public class Database
       }
       catch (SQLException sqlEx2) {
         throw new WellException(
-          "com.wellcom.sql.Database.executeQueryUpdate.rollback: "
+          "com.sql.Database.executeQueryUpdate.rollback: "
           + sqlEx.toString());
       }
 
       throw new WellException(
-        "com.wellcom.sql.Database.executeQueryUpdate: "
+        "com.sql.Database.executeQueryUpdate: "
         + sqlEx.toString());
     }
   }
@@ -1061,7 +1061,7 @@ public class Database
       return this.resultSet;
     }
     else {
-      throw new WellException("com.wellcom.Database.getResultSet: " +
+      throw new WellException("com.Database.getResultSet: " +
                               "this.resultSet = null");
     }
   }
@@ -1079,7 +1079,7 @@ public class Database
       }
     }
     catch (SQLException sqlEx) {
-      throw new WellException("com.wellcom.sql.Database.closeResultSet: "
+      throw new WellException("com.sql.Database.closeResultSet: "
                               + sqlEx.toString());
     }
   }
@@ -1101,7 +1101,7 @@ public class Database
     }
     catch (SQLException sqlEx) {
       throw new WellException(
-        "com.wellcom.sql.Database.closeConnection: "
+        "com.sql.Database.closeConnection: "
         + sqlEx.toString());
     }
   }
@@ -1115,7 +1115,7 @@ public class Database
   public void setQueryBatch(String value[]) throws WellException {
 
     if (value.length <= 0) {
-      throw new WellException("com.wellcom.sql.Database.setQueryBatch: "
+      throw new WellException("com.sql.Database.setQueryBatch: "
                               + "Par�metro null.");
     }
     else {
@@ -1134,7 +1134,7 @@ public class Database
 
       if (this.queryBatch == null) {
         throw new WellException(
-          "com.wellcom.sql.Database.executeQueryBatch: "
+          "com.sql.Database.executeQueryBatch: "
           + "No ha establecido un queryBatch.");
       }
 
@@ -1173,12 +1173,12 @@ public class Database
       }
       catch (SQLException sqlEx2) {
         throw new WellException(
-          "com.wellcom.sql.Database.executeQueryBatch.rollback: "
+          "com.sql.Database.executeQueryBatch.rollback: "
           + sqlEx.toString());
       }
 
       throw new WellException(
-        "com.wellcom.sql.Database.executeQueryBatch: "
+        "com.sql.Database.executeQueryBatch: "
         + sqlEx.toString());
     }
   }
@@ -1197,26 +1197,36 @@ public class Database
     }
     catch (Exception ex) {
       throw new WellException(
-        "com.wellcom.sql.Database.reloadRSColsData:"
+        "com.sql.Database.reloadRSColsData:"
         + ex.toString());
     }
   }
 
   public void doConnection() throws WellException {
 
-    try {
-
-      if (this.connectionType.equals("jdbc")) {
+    try 
+    {
+      Properties props = new Properties(); 
+      props.put("user", "root");         
+      props.put("password", "root");
+      props.put("useUnicode", "true");
+      props.put("useServerPrepStmts", "false"); // use client-side prepared statement
+      props.put("characterEncoding", "UTF-8"); // ensure charset is utf8 here
+      
+      this.url="jdbc:mysql://localhost:3306/REPRED";
+        
+      //if (this.connectionType.equals("jdbc")) 
+      if (true) 
+      {
 
         Class.forName(this.driver).newInstance();
         if (this.connection == null) {
           this.connection =
-            DriverManager.getConnection(this.url,
-                                        this.userName,
-                                        this.password);
+            DriverManager.getConnection(this.url,props);
         }
       }
-      else if (this.connectionType.equals("ds")) {
+      else if (this.connectionType.equals("ds")) 
+      {
 
         Context context = new InitialContext();
         DataSource ds = (DataSource) context.lookup(this.dataSourceName);
@@ -1226,7 +1236,7 @@ public class Database
       }
     }
     catch (Exception ex) {
-      throw new WellException("com.wellcom.sql.DataBase.doConnection: "
+      throw new WellException("com.sql.DataBase.doConnection: "
                               + ex.toString() + this.url + "|"
                               + this.userName + "|"
                               + this.dataSourceName);
@@ -1241,7 +1251,7 @@ public class Database
   public int getNumRowsRS() throws WellException {
 
     if(this.resultSet == null) {
-      throw new WellException( "com.wellcom.sql.Database.getNumRowsRS: "
+      throw new WellException( "com.sql.Database.getNumRowsRS: "
                                + "ResultSet nulo." );
     }
 
@@ -1289,13 +1299,13 @@ public class Database
       }
       else {
         throw new WellException(
-          "com.wellcom.sql.Database.getRSColumnsData: "
+          "com.sql.Database.getRSColumnsData: "
           + "this.resultSet = null");
       }
     }
     catch (SQLException sqlEx) {
       throw new WellException(
-        "com.wellcom.sql.Database.getRSColumnsData: "
+        "com.sql.Database.getRSColumnsData: "
         + sqlEx.toString());
     }
   }
@@ -1406,11 +1416,11 @@ public class Database
       }
     }
     catch (SQLException sqlEx) {
-      throw new WellException("com.wellcom.sql.Database.setRSData: "
+      throw new WellException("com.sql.Database.setRSData: "
                               + sqlEx.toString());
     }
     catch (Exception ex) {
-      throw new WellException("com.wellcom.sql.Database.setRSData: "
+      throw new WellException("com.sql.Database.setRSData: "
                               + ex.toString());
     }
   }
@@ -1450,7 +1460,35 @@ public class Database
   /*
    * Funcion main de prueba
    */
-  public static void main(String args[]) {
+  
+  
+  public static void main(String args[]) throws WellException, SQLException
+  {
+          
+    
+    Database db = new Database();
+    db.setDriver( "com.mysql.jdbc.Driver" );
+    db.doConnection();    
+    db.setQuerySelect("SELECT * FROM TBL_SRR_REP_STAT06_NT;");
+    
+    db.executeQuerySelect();
+    ResultSet rs = db.getResultSet();
+    
+    while(rs.next())
+    {
+        System.out.println("CODIGO_BANCO_EMI---CODIGO_BANCO_ADQ---CODIGO_TIPO_OPERACION---NOMBRE---CTA_CHEQUES---CTA_AHORRO");
+        System.out.println("----"+rs.getString("CODIGO_BANCO_EMI")+"----");    
+    }
+    
+    
+    
+  
+  
+  
+  }
+ 
+  public  void main2(String args[]) 
+  {
 
     Database db = new Database();
     db.setDriver( "com.mysql.jdbc.Driver" );
@@ -1459,6 +1497,11 @@ public class Database
     db.setUserName("root");
     db.setPassword("mysqls4ur0n");
 
+    
+    
+    
+    
+    
     /*db.setConnectionType("jdbc");
     db.setDriver("oracle.jdbc.driver.OracleDriver");
     db.setUrl("jdbc:oracle:thin:@localhost:1521:WELLDB");
