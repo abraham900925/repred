@@ -41,22 +41,24 @@
     /**
     * Invalidate Session
     */
-    if(session.getAttribute("grantAccess") != null) {
+    if(session.getAttribute("grantAccess") != null) 
+    {
         session.removeAttribute("grantAccess");
     }
     
-    if(request.getParameter("txtfLogin") != null
-        && request.getParameter("txtfPwd") != null) {
+    if(request.getParameter("txtfLogin") != null && request.getParameter("txtfPwd") != null)
+    {
         
         login = request.getParameter("txtfLogin");
         password = request.getParameter("txtfPwd");
     
-        if(login.length() != 0 && password.length() != 0) {
+        if(login.length() != 0 && password.length() != 0) 
+        {
 
             System.out.println("Autentificando al usuario...");
             myJndi.doProperties("../../../../propiedades.xml");
             
-            //if(myJndi.doLogin(login, password)) 
+            //if(myJndi.doLogin(login, password)) //vi@solutions quitar comentario prod
             if(true) 
             {
                    
@@ -158,7 +160,7 @@
 			}
 			quitFrame();
 		</script>
-        <link href="bootstrap/css/simple-sidebar.css" rel="stylesheet"></link>
+        <link href="bootstrap/css/simple-sidebar.css" rel="stylesheet" />
         <link href="bootstrap/css/style.css"    />
         <link href="bootstrap/css/form-elements.css" rel="stylesheet" />
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
