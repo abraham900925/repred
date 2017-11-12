@@ -1206,6 +1206,8 @@ public class Database
 
     try 
     {
+        
+        
       Properties props = new Properties(); 
       props.put("user", "root");         
       props.put("password", "root");
