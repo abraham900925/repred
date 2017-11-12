@@ -191,7 +191,7 @@ public class PDF
         this.document.add(this.table);
       }
       catch (Exception ex) {
-        throw new WellException("com.wellcom.io.PDF.addPageTable: " +
+        throw new WellException("com.io.PDF.addPageTable: " +
                                 ex.toString());
       }
     }
@@ -239,7 +239,7 @@ public class PDF
         this.document.add(this.table);
       }
       catch( Exception ex ) {
-        throw new WellException("com.wellcom.io.PDF.addDBPageTable:  "
+        throw new WellException("com.io.PDF.addDBPageTable:  "
                                 + ex.toString());
       }
     }
@@ -446,7 +446,7 @@ public class PDF
         this.document.add(new Paragraph(value));
       }
       catch (Exception ex) {
-        throw new WellException("com.wellcom.io.PDF.addPageText: " +
+        throw new WellException("com.io.PDF.addPageText: " +
                                 ex.toString());
       }
     }
@@ -481,7 +481,7 @@ public class PDF
         this.document.add(img);
       }
       catch (Exception ex) {
-        throw new WellException("com.wellcom.io.PDF.addPageImage: " +
+        throw new WellException("com.io.PDF.addPageImage: " +
                                 ex.toString());
       }
     }
@@ -512,7 +512,7 @@ public class PDF
         this.document.add(value);
       }
       catch (Exception ex) {
-        throw new WellException("com.wellcom.io.PDF.addPageImage: " +
+        throw new WellException("com.io.PDF.addPageImage: " +
                                 ex.toString());
       }
     }
@@ -545,7 +545,7 @@ public class PDF
         this.document.add(img);
       }
       catch (Exception ex) {
-        throw new WellException("com.wellcom.io.PDF.addPageImage: " +
+        throw new WellException("com.io.PDF.addPageImage: " +
                                 ex.toString());
       }
     }
@@ -588,7 +588,7 @@ public class PDF
       }
     }
     catch (Exception ex) {
-      throw new WellException("com.wellcom.io.PDF.openDocument(): "
+      throw new WellException("com.io.PDF.openDocument(): "
                               + ex.toString());
     }
   }
@@ -615,7 +615,7 @@ public class PDF
         this.document.newPage();
       }
       catch (Exception ex) {
-        throw new WellException("com.wellcom.io.PDF.newPage: " +
+        throw new WellException("com.io.PDF.newPage: " +
                                 ex.toString());
       }
     }
@@ -630,7 +630,7 @@ public class PDF
       this.addPageText(" ");
     }
     catch (Exception e) {
-      System.out.println("com.wellcom.io.PDF.insertBlankRow "
+      System.out.println("com.io.PDF.insertBlankRow "
                          + e.toString());
     }
   }
@@ -658,7 +658,7 @@ public class PDF
   public void setRowsWithBorder(int[] value) {
 
     /*if (value == null) {
-      throw new WellException("com.wellcom.io.PDF.setRowsWithBorder: "
+      throw new WellException("com.io.PDF.setRowsWithBorder: "
                               + "Argumento null");
     }*/
 
@@ -694,7 +694,7 @@ public class PDF
   public void setQuery( String value ) throws WellException {
 
     if(value == null) {
-      throw new WellException( "com.wellcom.io.PDF.setQuery: "
+      throw new WellException( "com.io.PDF.setQuery: "
                                + "Parametro nulo." );
     }
     else {
@@ -712,7 +712,7 @@ public class PDF
   public void setDB( Database value ) throws WellException {
 
     if(value == null) {
-      throw new WellException( "com.wellcom.io.PDF.setDB: "
+      throw new WellException( "com.io.PDF.setDB: "
                                + "Parametro nul." );
     }
     else {
@@ -812,7 +812,7 @@ public class PDF
         }
       }
       catch (Exception ex) {
-        throw new WellException("com.wellcom.io.PDF.preparePDFFile: " +
+        throw new WellException("com.io.PDF.preparePDFFile: " +
                                 ex.toString());
       }
     }
@@ -963,7 +963,7 @@ public class PDF
       }
     }
     catch (Exception ex) {
-      throw new WellException("com.wellcom.io.PDF.prepareTable: " +
+      throw new WellException("com.io.PDF.prepareTable: " +
                               ex.toString());
     }
   }
@@ -1030,7 +1030,7 @@ public class PDF
       }
     }
     catch (Exception ex) {
-      throw new WellException("com.wellcom.io.PDF.setDBColsTitles: " +
+      throw new WellException("com.io.PDF.setDBColsTitles: " +
                               ex.toString());
     }
   }
@@ -1123,7 +1123,7 @@ public class PDF
       }
     }
     catch (Exception ex) {
-      throw new WellException("com.wellcom.io.PDF.setDBRowValues: " +
+      throw new WellException("com.io.PDF.setDBRowValues: " +
                               ex.toString());
     }
   }

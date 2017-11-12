@@ -105,7 +105,7 @@ public class ResourceFile
       this.document = null;
     }
     else {
-      throw new WellException("com.wellcom.io.XMLFile.setFilePath: "
+      throw new WellException("com.io.XMLFile.setFilePath: "
                               + "Argumento null.");
     }
   }
@@ -128,7 +128,7 @@ public class ResourceFile
 
           if (this.filePath.length() <= 0) {
             throw new WellException(
-              "com.wellcom.io.ResourceFile: "
+              "com.io.ResourceFile: "
               + "No ha especificado un filePath.");
           }
 
@@ -143,13 +143,13 @@ public class ResourceFile
         result = (String)this.properties.getProperty(value);
       }
       catch (Exception ex) {
-        throw new WellException("com.wellcom.io.ResourceFile: "
+        throw new WellException("com.io.ResourceFile: "
                                 + ex.toString());
       }
     }
     else {
       throw new WellException(
-        "com.wellcom.io.ResourceFile.getFileProperty: "
+        "com.io.ResourceFile.getFileProperty: "
         + "Parámetro null.");
     }
 
@@ -172,7 +172,7 @@ public class ResourceFile
       if (this.inputStreamFile == null) {
 
         if (this.filePath.length() <= 0) {
-          throw new WellException("com.wellcom.io.ResourceFile: "
+          throw new WellException("com.io.ResourceFile: "
                                   + "No ha especificado un filePath.");
         }
         this.inputStreamFile =(com.prosa.io.ResourceFile.class).getResourceAsStream("/propiedades.xml");
@@ -189,7 +189,7 @@ public class ResourceFile
     }
     else {
       throw new WellException(
-        "com.wellcom.io.ResourceFile.getXMLProperty: "
+        "com.io.ResourceFile.getXMLProperty: "
         + "Parámetro null.");
     }
 
@@ -217,7 +217,7 @@ public class ResourceFile
     }
     catch (Exception er) {
 //		 er.printStackTrace();
-      throw new WellException("com.wellcom.directory.File.getPropertiesKey|" +
+      throw new WellException("com.directory.File.getPropertiesKey|" +
                               er.toString());
     }
 
@@ -258,7 +258,7 @@ public class ResourceFile
     }
     catch (Exception ex) {
 
-      throw new WellException("com.wellcom.io.XMLFile.prepareDocument: "
+      throw new WellException("com.io.XMLFile.prepareDocument: "
                               + ex.toString());
     }
   }

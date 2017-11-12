@@ -51,7 +51,7 @@ public class HTML {
         try {
             if (rowValues == null) {
                 throw new WellException(
-                    "com.wellcom.io.HTML.getTotalSum: Parametros invalidos");
+                    "com.io.HTML.getTotalSum: Parametros invalidos");
             }
             
             double result = 0.00;
@@ -76,6 +76,36 @@ public class HTML {
     }
     
     /**
+     * Marca de cambio Author: Ing. Abraham Vargas VI@SOLUTIONS
+     */
+    
+    public String createDdlFiids(String name, ArrayList<String> values)throws WellException {
+        
+        if ( (name.length() <= 0) || (values == null)) 
+        {
+            throw new WellException(
+                "com.io.HTML.getComboBox: Par�metros inv�lidos");
+        }
+        String ddlFiids="<select name=\"selectBost\" class=\"form-control\" id=\"dtp_input3\">";
+        for(Object g : values)
+        {
+           String [] h= (String[])g;
+          ddlFiids+="<option value="+h[0]+">"+h[0]+"</option>";                 
+        
+        }
+        
+        ddlFiids+="</select>";
+        
+        return ddlFiids;
+    
+    }
+     /**
+     * Fin Marca de cambio Author: Ing. Abraham Vargas VI@SOLUTIONS
+     */
+    
+    
+    
+    /**
      * Se obtiene un "combobox" a partir de un conjunto de valores
      * @param name variable de tipo "String" que establece el nombre del
      * combobox
@@ -88,23 +118,27 @@ public class HTML {
         
         if ( (name.length() <= 0) || (values == null)) {
             throw new WellException(
-                "com.wellcom.io.HTML.getComboBox: Par�metros inv�lidos");
+                "com.io.HTML.getComboBox: Par�metros inv�lidos");
         }
         
         String result = "<select name=\"" + name + "\" id=\"cbTipoTar\">";
         
         Iterator it = values.iterator();
         String cbValues[] = null;
-        while (it.hasNext()) {
+        while (it.hasNext()) 
+        {
             
             cbValues = (String[]) it.next();
             
             result += "<option value=\""
                 + cbValues[0] + "\">";
                 
-            if(cbValues.length == 1) {
+            if(cbValues.length == 1)
+            {
                 result += cbValues[0] + "</option>";
-            } else {
+            }
+            else 
+            {
                 result += cbValues[1] + "</option>";
             }
         }
@@ -120,7 +154,7 @@ public class HTML {
         
         if ( (name.length() <= 0) || (values == null)) {
             throw new WellException(
-                "com.wellcom.io.HTML: Par�metros inv�lidos");
+                "com.io.HTML: Par�metros inv�lidos");
         }
         
         String result = "<select name=\"" + name + "\" id=\"cbTipoTar\">";
@@ -168,7 +202,7 @@ public class HTML {
             return invalidFields;
         }
     /*            throw new WellException(
-     "com.wellcom.io.HTML.validateFields: No ha especificado "
+     "com.io.HTML.validateFields: No ha especificado "
                         + "ning�n campo para validar." );
      */
         Set set = this.fieldsToValidate.entrySet();
@@ -205,7 +239,7 @@ public class HTML {
         
         if ( (fieldName.length() <= 0)) {
             throw new WellException(
-                "com.wellcom.io.HTML.AddFieldToValidate: "
+                "com.io.HTML.AddFieldToValidate: "
                 + "Par�metros inv�lidos.");
         }
         
@@ -271,7 +305,7 @@ public class HTML {
         
         if ( (colTitles == null) || (rowValues == null)) {
             throw new WellException(
-                "com.wellcom.io.HTML.getTable: "
+                "com.io.HTML.getTable: "
                 + "Par�metros inv�lidos.");
         }
         
@@ -341,7 +375,7 @@ public class HTML {
         
         if ( (colTitles == null) || (rowValues == null)) {
             throw new WellException(
-                "com.wellcom.io.HTML.getTable: "
+                "com.io.HTML.getTable: "
                 + "Par�metros inv�lidos.");
         }
         
@@ -401,7 +435,7 @@ public class HTML {
         
         if ( (name.length() <= 0) || (values == null)) {
             throw new WellException(
-                "com.wellcom.io.HTML.getComboBox: Par�metros inv�lidos");
+                "com.io.HTML.getComboBox: Par�metros inv�lidos");
         }
         
         String result = "<select name=\"" + name + "\" id=\"" + name + "\" multiple=\"multiple\">";

@@ -2,7 +2,7 @@
 # Nombre del Programa :  ExcelServlet.java                                      #
 # Autor               :  ARMANDO FLORES	I.                                      #
 # Compania            :  WELLCOM S.A. DE C.V.                                   #
-# Proyecto/Procliente :  C-08-089-07             	   FECHA:28/10/2004         #
+# Proyecto/Procliente :  C-08-089-07             	   FECHA:28/10/2004     #
 # Descripcion General :	 Reporte de Transacciones                               #
 #                                                                               #
 # Programa Dependiente:                                                         #
@@ -12,11 +12,20 @@
 #                                                                               #
 # Dias de ejecucion   :  A Peticion del web, se pueden ejecutar n instancias    #
 #################################################################################
-#								MODIFICACIONES                                  #
+#								MODIFICACIONES  #
 # Autor               :  JOAQUIN ANGEL MOJICA QUEZADA                           #
 # Compania            :  Wellcom S.A. de C.V.                                   #
 # Proyecto/Procliente :  F-04-1112-07                Fecha: 30/11/2007          #
 # Modificacion        :  Correccion en la generacion de Reportes                #
+#-----------------------------------------------------------------------------  #
+# Numero de Parametros: 0                                                       #
+#################################################################################
+#################################################################################
+#								MODIFICACIONES  #
+# Autor               :  ABRAHAM VARGAS                                         #
+# Compania            :  VI@SOLUTIONS S.A. de C.V.                              #
+# Proyecto/Procliente :  F-04-1112-07                Fecha: 30/11/2017          #
+# Modificacion        :  Cambio de reporteador                                  #
 #-----------------------------------------------------------------------------  #
 # Numero de Parametros: 0                                                       #
 ###############################################################################*/
@@ -36,12 +45,15 @@ import com.prosa.sql.Database;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import com.prosa.service.ReporteService;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import com.prosa.dao.Stat06ntImp;
+import com.prosa.exceptions.WellException;
 //import org.apache.tools.ant.taskdefs.Tstamp;
 
 /**
@@ -69,6 +81,8 @@ public class ExcelServlet extends HttpServlet implements Serializable {
     private Workbook                 wb;
     private Sheet                    sheet;
     private CellStyle                cellStyle;
+    private Stat06ntImp              stat06Impl;
+    private ReporteService           serviceReports; 
     
   	/*-- Marca del Cambio : WELL-JMQ-F-04-1112-07 Inicia la Modificacion   30/11/2007	*/	     
     private String connEXC;
@@ -90,8 +104,10 @@ public class ExcelServlet extends HttpServlet implements Serializable {
      * @throws ServletException
      */
     public void doGet(HttpServletRequest request,
-        HttpServletResponse response) throws ServletException {
-
+        HttpServletResponse response) throws ServletException, IOException 
+    {
+        //stat06Impl = new Stat06ntImp();
+        serviceReports= new ReporteService();
         try {
             fileIn=ExcelServlet.class.getClassLoader().getResourceAsStream("/stat06nt.xlt");
             
@@ -99,73 +115,79 @@ public class ExcelServlet extends HttpServlet implements Serializable {
             /*
              * Agregado el 07/Mar/2007
              */
-            Excel excel;
+            //Excel excel;
             /******************************************************************/
 
             // Stream de salida
             //ByteArrayOutputStream bOut;
 
             HttpSession session = request.getSession(true);
+            /*
             String sessionID = session.getId() + "Excel";
             String excelID = request.getParameter("sessionIDExcel");
             String fileName = request.getParameter("fileName");
           	/*-- Marca del Cambio : WELL-JMQ-F-04-1112-07 Inicia la Modificacion   30/11/2007	*/	     
-            String connEXC = request.getParameter("connEXC");
+            //String connEXC = request.getParameter("connEXC");
             /*-- Marca del Cambio : WELL-JMQ-F-04-1112-07 Finaliza la Modificacion   30/11/2007	*/
             
-            if(fileName == null) {
+           /* if(fileName == null) {
                 fileName = "archivo";
-            }
+            }*/
 
-            if(sessionID.equals(excelID)) {
+            if(true) 
+            {
                 
                 /*
                  * Agregado el 07/Mar/2007
                  */
                 //excel = (Excel)session.getAttribute(excelID);
-                excel = new Excel();
+                /*excel = new Excel();
                 headerFiltro = (String)session.getAttribute(sessionID + "Header");
                 colsTitles = (String[])session.getAttribute(sessionID + "ColsTitles");
                 sheetName = (String)session.getAttribute(sessionID + "SheetName");
                 filesPerPage = ((Integer) session.getAttribute("FILAS_POR_PAGINA")).intValue();
               	/*-- Marca del Cambio : WELL-JMQ-F-04-1112-07 Inicia la Modificacion   30/11/2007	*/	                
-                if (connEXC==null)
+               /* if (connEXC==null)
                    {
                    sessionID = session.getId() + "db";
                    }
                 else
                 {
                 	sessionID = session.getId() + connEXC;	
-                }
+                }*/
                 /*-- Marca del Cambio : WELL-JMQ-F-04-1112-07 Finaliza la Modificacion   30/11/2007	*/            
-                uidReport = (ArrayList)session.getAttribute(sessionID + "UIDReport");
-                db = (Database)session.getAttribute(sessionID);
+                //uidReport = (ArrayList)session.getAttribute(sessionID + "UIDReport");
+                //db = (Database)session.getAttribute(sessionID);
                 query = (String)session.getAttribute("QUERY_SELECT");
-                doDocument(excel);
+                generaReporteStat06Nt(); // cambio vi@solutions
+                
+                //doDocument(excel); cambio vi@solutions
                 /**************************************************************/
 
                 //bOut = (ByteArrayOutputStream) session.getAttribute(excelID);
                 StringBuffer attachment = new StringBuffer();
                 attachment.append("attachment;filename=\"");
-                attachment.append(fileName);
+                attachment.append("stat06Nt");
                 attachment.append(".xls\"");
                 response.setContentType(CONTENT_TYPE);
-                response.setHeader("Content-Disposition",
-                    attachment.toString());
-                response.setHeader("Content-Description",
-                    "Archivo Microsoft Excel");
+                response.setHeader("Content-Disposition",attachment.toString());
+                response.setHeader("Content-Description","Archivo Microsoft Excel");
+                generaReporteStat06Nt().write(bOut);
                 ServletOutputStream out = response.getOutputStream();
                 bOut.writeTo(out);
                 out.flush();
                 out.close();
+                
             }
-        } catch(Exception ex) {
+        } 
+        catch(Exception ex) 
+        {
             System.err.println(ex.toString());
         }
     }
 
     public void doPost(HttpServletRequest request,
-        HttpServletResponse response) throws ServletException {
+        HttpServletResponse response) throws ServletException, IOException {
 
         this.doGet(request, response);
     }
@@ -201,68 +223,11 @@ public class ExcelServlet extends HttpServlet implements Serializable {
     }
     
     /*Autor: Ing.Abraham Vargas modificacion: Se crea metodo que genera reporte stat06nt*/
-    public Workbook generaReporteStat06Nt() throws IOException
+    public Workbook generaReporteStat06Nt() throws IOException, WellException
     {
-        this.wb= new HSSFWorkbook(this.fileIn);;//Creamos libro 
-        this.sheet=this.wb.getSheetAt(0);//obtiene la hoja actual 
-        
-         int count=1,newRow;       
-       for(int i=0;i<10;i++)
-        {
-            /*
-            Row row = this.sheet.createRow(i+1);
-            Cell cellFecha = row.createCell(0);
-            cellFecha.setCellValue(rep.getFecha());
-            
-            Cell cellBanco = row.createCell(1);
-            cellBanco.setCellValue(rep.getBanco());
-
-            
-            Cell cellRetMn = row.createCell(2);
-            cellRetMn.setCellValue(rep.getRetiroMn());
-           
-            Cell cellRetDlls = row.createCell(3);
-            cellRetDlls.setCellValue(rep.getRetiroDlls());
-            
-            
-            Cell cellVenGen = row.createCell(4);
-            cellVenGen.setCellValue(rep.getVenGen());
-            
-           
-            Cell cellPagoElec = row.createCell(5);
-            cellPagoElec.setCellValue(rep.getPagoElec());
-            
-           
-            Cell cellConsultas = row.createCell(6);
-            cellConsultas.setCellValue(rep.getConsultas());           
-            
-            Cell cellCambioNip = row.createCell(7);
-            cellCambioNip.setCellValue(rep.getCambioNip());
-           
-            Cell cellRech = row.createCell(8);
-            cellRech.setCellValue(rep.getRechazos());
-           
-            Cell cellRetenidas = row.createCell(9);
-            cellRetenidas.setCellValue(rep.getRetenidas());            
-            
-            Cell cellTransfer = row.createCell(10);
-            cellTransfer.setCellValue(rep.getTransfer());
-           
-            Cell cellDep = row.createCell(11);
-            cellDep.setCellValue(rep.getDeposito());
-            
-            
-            Cell cellUltMov = row.createCell(12);
-            cellUltMov.setCellValue(rep.getUltMov());
-            
-           
-            Cell cellSurcharge = row.createCell(13);
-            cellSurcharge.setCellValue(rep.getSurchage());
-               */
-        
-        }
+   
+     return  this.serviceReports.createReportStat06Nt(query);
        
-       return this.wb;
         
     }
     public Workbook generaReporteStat07Nt() throws IOException
@@ -294,6 +259,6 @@ public class ExcelServlet extends HttpServlet implements Serializable {
         
        return null;
     }
-    
+    /*Autor: Ing.Abraham Vargas fin modificacion: Se crea metodo que genera reporte stat06nt*/
     
 }

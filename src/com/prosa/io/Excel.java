@@ -80,7 +80,7 @@ public class Excel
         if (value != null) {
             this.sheetColTitles = value;
         } else {
-            throw new WellException("com.wellcom.io.Excel.setSheetColsTitles:"
+            throw new WellException("com.io.Excel.setSheetColsTitles:"
                 + "Argumento null.");
         }
     }
@@ -109,7 +109,7 @@ public class Excel
             tmpStr[0] = value;
             this.setSheetColsTitles(tmpStr);
         } else {
-            throw new WellException("com.wellcom.io.Excel.setSheetColsTitles:"
+            throw new WellException("com.io.Excel.setSheetColsTitles:"
                 + "Argumento null.");
         }
     }
@@ -127,7 +127,7 @@ public class Excel
         if (value != null) {
             this.sheetRowValues = value;
         } else {
-            throw new WellException("com.wellcom.io.Excel.setSheetRowValues: "
+            throw new WellException("com.io.Excel.setSheetRowValues: "
                 + "Argumento null.");
         }
     }
@@ -148,7 +148,7 @@ public class Excel
             tmpAR.add(tmpTxt);
             setSheetRowValues(tmpAR);
         } else {
-            throw new WellException("com.wellcom.io.Excel.setSheetRowValues: "
+            throw new WellException("com.io.Excel.setSheetRowValues: "
                 + "Argumento null.");
         }
     }
@@ -168,11 +168,11 @@ public class Excel
                 this.writableWorkbook =
                     Workbook.createWorkbook(this.excelFile);
             } catch (Exception ex) {
-                throw new WellException("com.wellcom.io.Excel.setExcelFile: "
+                throw new WellException("com.io.Excel.setExcelFile: "
                     + ex.toString());
             }
         } else {
-            throw new WellException("com.wellcom.io.Excel.setExcelFile: "
+            throw new WellException("com.io.Excel.setExcelFile: "
                 + "Argumento null.");
         }
     }
@@ -192,11 +192,11 @@ public class Excel
                 this.writableWorkbook =
                     Workbook.createWorkbook(this.excelOutputStream);
             } catch (Exception ex) {
-                throw new WellException("com.wellcom.io.Excel.setExcelFile: "
+                throw new WellException("com.io.Excel.setExcelFile: "
                     + ex.toString());
             }
         } else {
-            throw new WellException("com.wellcom.io.Excel.setExcelFile: "
+            throw new WellException("com.io.Excel.setExcelFile: "
                 + "Argumento null.");
         }
     }
@@ -214,7 +214,7 @@ public class Excel
                 "P�gina " + this.numOfSheet, this.numOfSheet++);
             this.currentRow = 0;
         } else {
-            throw new WellException("com.wellcom.io.Excel.newSheet: "
+            throw new WellException("com.io.Excel.newSheet: "
                 + "No ha creado ning�n documento.");
         }
     }
@@ -228,7 +228,7 @@ public class Excel
     public void newSheet(String sheetName, int sheetNumber) throws WellException {
         
         if ( (sheetName.length() <= 0) || (sheetNumber < 0)) {
-            throw new WellException("com.wellcom.io.Excel.newSheet: "
+            throw new WellException("com.io.Excel.newSheet: "
                 + "Par�metro null y/o incorrecto.");
         }
         
@@ -241,7 +241,7 @@ public class Excel
              */
             this.currentRow = 0;
         } else {
-            throw new WellException("com.wellcom.io.Excel.newSheet: "
+            throw new WellException("com.io.Excel.newSheet: "
                 + "No ha creado ning�n documento.");
         }
     }
@@ -260,11 +260,11 @@ public class Excel
         /******************************************/
         
         if (this.writableWorkbook == null) {
-            throw new WellException("com.wellcom.io.Excel.addSheetColsTitles: "
+            throw new WellException("com.io.Excel.addSheetColsTitles: "
                 + "No ha creado ning�n documento.");
         }
         if (this.writableSheet == null) {
-            throw new WellException("com.wellcom.io.Excel.addSheetColsTitles: "
+            throw new WellException("com.io.Excel.addSheetColsTitles: "
                 + "No ha creado ninguna hoja de c�lculo.");
         }
         
@@ -310,7 +310,7 @@ public class Excel
                 
                 currentRow++;
             } catch (Exception ex) {
-                throw new WellException("com.wellcom.io.Excel.addSheetData: "
+                throw new WellException("com.io.Excel.addSheetData: "
                     + ex.toString());
             }
         }
@@ -350,11 +350,11 @@ public class Excel
         /*************************************************************/
         
         if (this.writableWorkbook == null) {
-            throw new WellException("com.wellcom.io.Excel.addSheetRows: "
+            throw new WellException("com.io.Excel.addSheetRows: "
                 + "No ha creado ning�n documento.");
         }
         if (this.writableSheet == null) {
-            throw new WellException("com.wellcom.io.Excel.addSheetRows: "
+            throw new WellException("com.io.Excel.addSheetRows: "
                 + "No ha creado ninguna hoja de c�lculo.");
         }
         
@@ -478,7 +478,7 @@ public class Excel
                     rowsBordered++;
                 }
             } catch (Exception ex) {
-                throw new WellException("com.wellcom.io.Excel.addSheetRows: "
+                throw new WellException("com.io.Excel.addSheetRows: "
                     + ex.toString());
             }
         }
@@ -530,11 +530,11 @@ public class Excel
         /*************************************************************/
         
         if (this.writableWorkbook == null) {
-            throw new WellException("com.wellcom.io.Excel.addSheetRows: "
+            throw new WellException("com.io.Excel.addSheetRows: "
                 + "No ha creado ning�n documento.");
         }
         if (this.writableSheet == null) {
-            throw new WellException("com.wellcom.io.Excel.addSheetRows: "
+            throw new WellException("com.io.Excel.addSheetRows: "
                 + "No ha creado ninguna hoja de c�lculo.");
         }
         
@@ -657,7 +657,7 @@ public class Excel
                     rowsBordered++;
                 }
             } catch (Exception ex) {
-                throw new WellException("com.wellcom.io.Excel.addSheetRows: "
+                throw new WellException("com.io.Excel.addSheetRows: "
                     + ex.toString());
             }
         }
@@ -714,11 +714,11 @@ public class Excel
         /*************************************************************/
         
         if (this.writableWorkbook == null) {
-            throw new WellException("com.wellcom.io.Excel.addSheetRows: "
+            throw new WellException("com.io.Excel.addSheetRows: "
                 + "No ha creado ning�n documento.");
         }
         if (this.writableSheet == null) {
-            throw new WellException("com.wellcom.io.Excel.addSheetRows: "
+            throw new WellException("com.io.Excel.addSheetRows: "
                 + "No ha creado ninguna hoja de c�lculo.");
         }
         
@@ -866,7 +866,7 @@ public class Excel
                 }
             }
         } catch (Exception ex) {
-            throw new WellException("com.wellcom.io.Excel.addSheetRows: "
+            throw new WellException("com.io.Excel.addSheetRows: "
                 + ex.toString());
         }
     }
@@ -882,7 +882,7 @@ public class Excel
             addSheetColsTitles();
             addSheetRows(null, this.BORDER_ALL, this.BORDERSTYLE_THIN, false);
         } catch (Exception e) {
-            throw new WellException("com.wellcom.io.Excel.addSheetData");
+            throw new WellException("com.io.Excel.addSheetData");
         }
     }
     
@@ -897,14 +897,14 @@ public class Excel
             addDBSheetColsTitles();
             addDBSheetRows(null, this.BORDER_ALL, this.BORDERSTYLE_THIN, false);
         } catch (Exception e) {
-            throw new WellException("com.wellcom.io.Excel.addDBSheetData");
+            throw new WellException("com.io.Excel.addDBSheetData");
         }
     }
     
     public void setDB(Database value) throws WellException {
         
         if(value == null) {
-            throw new WellException("com.wellcom.io.Excel.setDB: "
+            throw new WellException("com.io.Excel.setDB: "
                 + "Parametro nulo.");
         } else {
             this.db = value;
@@ -919,12 +919,12 @@ public class Excel
     public void addSheetImage(byte[] value) throws WellException {
         
         if (this.writableWorkbook == null) {
-            throw new WellException("com.wellcom.io.Excel.addSheetImage: "
+            throw new WellException("com.io.Excel.addSheetImage: "
                 + "No ha creado ning�n documento.");
         }
         
         if (value == null) {
-            throw new WellException("com.wellcom.io.Excel.addSheetImage: "
+            throw new WellException("com.io.Excel.addSheetImage: "
                 + "Argumento null.");
         }
         
@@ -936,7 +936,7 @@ public class Excel
             
             this.currentRow = 27;
         } catch (Exception ex) {
-            throw new WellException("com.wellcom.io.Excel.addSheetImage: "
+            throw new WellException("com.io.Excel.addSheetImage: "
                 + ex.toString());
         }
     }
@@ -949,12 +949,12 @@ public class Excel
     public void addSheetImage(File value) throws WellException {
         
         if (this.writableWorkbook == null) {
-            throw new WellException("com.wellcom.io.Excel.addSheetImage: "
+            throw new WellException("com.io.Excel.addSheetImage: "
                 + "No ha creado ning�n documento.");
         }
         
         if (value == null) {
-            throw new WellException("com.wellcom.io.Excel.addSheetImage: "
+            throw new WellException("com.io.Excel.addSheetImage: "
                 + "Argumento null.");
         }
         
@@ -966,7 +966,7 @@ public class Excel
             
             this.currentRow = 27;
         } catch (Exception ex) {
-            throw new WellException("com.wellcom.io.Excel.addSheetImage: "
+            throw new WellException("com.io.Excel.addSheetImage: "
                 + ex.toString());
         }
     }
@@ -984,12 +984,12 @@ public class Excel
         int width, int height) throws WellException {
         
         if (this.writableWorkbook == null) {
-            throw new WellException("com.wellcom.io.Excel.addSheetImage: "
+            throw new WellException("com.io.Excel.addSheetImage: "
                 + "No ha creado ning�n documento.");
         }
         
         if (image == null) {
-            throw new WellException("com.wellcom.io.Excel.addSheetImage: "
+            throw new WellException("com.io.Excel.addSheetImage: "
                 + "Argumento null.");
         }
         
@@ -1001,7 +1001,7 @@ public class Excel
             
             this.currentRow = height + 2;
         } catch (Exception ex) {
-            throw new WellException("com.wellcom.io.Excel.addSheetImage: "
+            throw new WellException("com.io.Excel.addSheetImage: "
                 + ex.toString());
         }
     }
@@ -1019,12 +1019,12 @@ public class Excel
         int width, int height) throws WellException {
         
         if (this.writableWorkbook == null) {
-            throw new WellException("com.wellcom.io.Excel.addSheetImage: "
+            throw new WellException("com.io.Excel.addSheetImage: "
                 + "No ha creado ning�n documento.");
         }
         
         if (image == null) {
-            throw new WellException("com.wellcom.io.Excel.addSheetImage: "
+            throw new WellException("com.io.Excel.addSheetImage: "
                 + "Argumento null.");
         }
         
@@ -1036,7 +1036,7 @@ public class Excel
             
             this.currentRow = height + 2;
         } catch (Exception ex) {
-            throw new WellException("com.wellcom.io.Excel.addSheetImage: "
+            throw new WellException("com.io.Excel.addSheetImage: "
                 + ex.toString());
         }
     }
@@ -1048,7 +1048,7 @@ public class Excel
     public void closeFile() throws WellException {
         
         if (this.writableWorkbook == null) {
-            throw new WellException("com.wellcom.io.Excel.closeFile: "
+            throw new WellException("com.io.Excel.closeFile: "
                 + "No ha creado ning�n documento.");
         }
         
@@ -1057,7 +1057,7 @@ public class Excel
             this.writableWorkbook.write();
             this.writableWorkbook.close();
         } catch (Exception ex) {
-            throw new WellException("com.wellcom.io.Excel.closeFile: "
+            throw new WellException("com.io.Excel.closeFile: "
                 + ex.toString());
         }
     }
@@ -1196,12 +1196,12 @@ public class Excel
                 this.writableSheet.addCell(label);
                 this.currentRow++;
             } catch (Exception e) {
-                throw new WellException("com.wellcom.io.Excel.insertBlankRow: "
+                throw new WellException("com.io.Excel.insertBlankRow: "
                     + e.toString());
             }
             
         } else {
-            throw new WellException("com.wellcom.io.Excel.insertBlankRow: "
+            throw new WellException("com.io.Excel.insertBlankRow: "
                 + "No ha creado ninguna hoja de calculo");
         }
     }
@@ -1245,7 +1245,7 @@ public class Excel
     public void setPagingSize(int value) throws WellException {
         
         if(value <= 0) {
-            throw new WellException("com.wellcom.io.Excel.setPagingSize: "
+            throw new WellException("com.io.Excel.setPagingSize: "
                 + "Valor menor o igual a cero.");
         } else {
             this.pagingSize = value;
